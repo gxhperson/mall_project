@@ -24,7 +24,7 @@ class Commodity(models.Model):
     sales_volumes=models.IntegerField('销量')
     status=models.CharField('状态',max_length=30,default='O') # o（on sale在售） s（sale out 售空）
     type=models.CharField('笔记本类型',max_length=30,default='轻薄笔记本')
-    brand_id=ForeignKey(Image, on_delete=models.CASCADE)  #外键
+    brand_id=models.ForeignKey(Image, on_delete=models.CASCADE)  #外键
     GPU_brand=models.CharField('显卡品牌',max_length=30)
     GPU_type=models.CharField('显卡类型',max_length=30)
     CPU_brand=models.CharField('处理器品牌',max_length=30)
@@ -34,6 +34,12 @@ class Commodity(models.Model):
     size=models.CharField('电脑尺寸',max_length=30)
     resolution_ratio=models.CharField('屏幕分辨率',max_length=30)
     operating_system=models.CharField('电脑操作系统',max_length=30)
+    #新添加的start
+    network=models.CharField('通信',max_length=30,null=True)
+    launch_time=models.DateTimeField('上架时间',auto_now_add=True,null=True)
+    distribution_services=models.CharField('配送服务',max_length=100,null=True)
+    provide_free_gifts=models.CharField('附送',max_length=100,null=True)
+    # 新添加的end
     weight=models.CharField('重量',max_length=30)
     color=models.CharField('颜色',max_length=30)
     product_from=models.CharField('产地',max_length=30)
